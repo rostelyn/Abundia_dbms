@@ -1,0 +1,67 @@
+
+USE rostelyn ;
+
+CREATE TABLE Student(
+	student_no varchar(15) PRIMARY KEY,
+    Student_fname varchar (15),
+    studen_lname varchar (15),
+    major varchar (15),
+    gender enum ("F", "M"),
+    house_add varchar (15)
+
+
+
+);
+
+CREATE TABLE grade(
+	stud_no int PRIMARY KEY,
+    Subject_code varchar (15),
+    grade int
+   
+);
+
+CREATE TABLE subject(
+	subject_code varchar (15) PRIMARY KEY,
+    subject_descr varchar (15) 
+
+);
+
+
+INSERT INTO Student VALUES 
+	("S_101", "Ana", "Cruz", "ECE", "F", "MAlolos Bulacan"),
+    ("S_102", "Hazel", "ponce", "COE", "F", "Plaridel Bulacan"),
+    ("S_103", "Gristov", "Concio", "ECE", "M", "Malolos Bulacan"),
+    ("S_104", "Aris", "Clavio", "COE", "M", "Pulilan Bulacan"),
+    ("S_105", "Honey", "Pelavio", "COE", "F", "Plaridel Bulacan"),
+    ("S_106", "Carrie", "Abao", "ECE", "F", "Pulilan Bulacan");
+
+INSERT INTO grade VALUES
+("S-101", "Chem 123", "2.00"),
+("S-101", "Math 122", "1.00"),
+("S-101", "Math 123", "1.50"),
+("S-102", "Chem 123", "1.75"),
+("S-102", "Math 122", "1.25"),
+("S-102", "Math 123", "1.50"),
+("S-103", "Chem 123", "2.00"),
+("S-103", "Math 122", "1.75"),
+("S-103", "Math 123", "1.25"),
+("S-104", "Chem 123", "1.25"),
+("S-104", "Math 122", "2.25"),
+("S-104", "Math 123", "2.50"),
+("S-105", "Chem 123", "1.00"),
+("S-105", "Math 122", "1.25"),
+("S-105", "Math 123", "2.50"),
+("S-106", "Chem 123", "1.25"),
+("S-106", "Math 122", "1.50"),
+("S-106", "Math 123", "1.75")
+;
+
+INSERT INTO subject VALUES
+("Chem 123", "Chemistry"),
+("Math 122", "Trigonometry"),
+("Chem 123", "Algebra")
+;
+
+SELECT * FROM student WHERE Gender="F" AND Major="ECE" AND HomeAddress="Malolos, Bulacan";
+SELECT * FROM grade WHERE SubjectCode="Math 122" AND Grade < 2;
+SELECT StudFName, StudLName, Gender, HomeAddress FROM student INNER JOIN grade ON student.Gender = grade.SubjectCode;
