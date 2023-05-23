@@ -1,0 +1,27 @@
+CREATE DATABASE abundia_midterm;
+
+USE abundia_midterm;
+
+CREATE TABLE StudentInfo(
+    student_no int PRIMARY KEY AUTO_INCREMENT,
+    studFName varchar(50),
+    studLName varchar(50),
+    major varchar(50),
+    gender ENUM('M','F') DEFAULT 'M',
+    homeaddress varchar(50)
+);
+
+CREATE TABLE Subject(
+    subjectcode int PRIMARY KEY AUTO_INCREMENT,
+    student_no int,
+    grade int,
+    CONSTRAINT FKStudentInfo FOREIGN KEY(student_no)
+    REFERENCES StudentInfo (student_no)
+);
+
+CREATE TABLE Grade(
+    subjectcode int,
+    subjdescr varchar(50),
+   	CONSTRAINT FKSubject FOREIGN KEY(subjectcode)
+    REFERENCES Subject (subjectcode)
+);
